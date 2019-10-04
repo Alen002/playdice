@@ -2,10 +2,10 @@
 body {
     margin: 0; 
     padding: 0;
+    touch-action: manipulation; 
 }
 
-svg {
-    
+svg { 
     /*position: absolute; /* SVGs are overlapping */
     background: lightblue;
     width: 300px;

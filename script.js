@@ -61,21 +61,28 @@ function playerWin() { //Check which player guesses the correct dice
         document.getElementById('compScore').innerHTML = scoreComp;
     } else if(scoreUser == 6) {
         alert('Congratulations, you have won the game...');
+        newGame(1);
     } else if(scoreComp == 6) {
         alert('You have lost the game');
+        newGame(1);
     }
    /*  } else if (document.querySelector('option').value) */
 }
 
-function newGame() {
-    alert('A new Game has started');
+function newGame(check) {
+    
     scoreUser = 0;
     scoreComp = 0;
     countRounds = 0;
     document.getElementById('compScore').innerHTML = '0';
     document.getElementById('userScore').innerHTML = '0';
     document.querySelector('#gameRounds').innerHTML = '0';
+    document.querySelector('#userInput').textContent = '0';
+    document.getElementById('diceInput').value = '0';
     hideDice();
+    if(check != 1) {
+        alert('You have started a new game');
+    }
 }
 
 

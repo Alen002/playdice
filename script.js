@@ -12,7 +12,7 @@ function showResult() { // Create and display the random dice number
     hideDice();
     randomNumber = Math.round(Math.random()*5)+1; 
     console.log(randomNumber)
-    
+    validateDropdown();
     
     switch(randomNumber) {
         case 1: document.querySelector("#one").style.display= 'block';
@@ -31,21 +31,30 @@ function showResult() { // Create and display the random dice number
         playerWin();
         break;
         case 6: document.querySelector("#six").style.display= 'block';
-        
+        playerWin();
+        break;
     }
     
 }
 
 function playerWin() {
     if(document.querySelectorAll('input')[0].value == randomNumber) {
-        alert('You have Won')
+        alert('You have Won');
         score +=1;
         console.log('score' + score)
     }
+   /*  } else if (document.querySelector('option').value) */
 }
 
 
-
+function validateDropdown() { //Checks whether user selects higher or lower number
+    let userSelect = document.getElementById('dropdown').value;
+    if(userSelect == '1') {
+        alert('Higher Number Selected');
+    } else if (userSelect == '0') {
+        alert('Lower Number Selected');
+    }
+}
 
 
 

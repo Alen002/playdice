@@ -5,7 +5,15 @@ body {
     touch-action: manipulation; 
 }
 
+header {
+    height: 50px;
+    background: lightblue;
+    margin-bottom: 30px;
+}
 
+#input {
+    margin-top: 30px;
+}
 svg { 
     /*position: absolute; /* SVGs are overlapping */
     background: lightblue;
@@ -19,7 +27,12 @@ rect {
     stroke: black;
 }
 
-#input {
+#dice {
+    margin-left: 20px;
+}
+#userInput {
+    margin-top: 30px;
+    margin-left: 20px;
     position: center;
     touch-action: manipulation; 
 }

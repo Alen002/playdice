@@ -1,5 +1,6 @@
 hideDice(); // hide dice
-score = 0;
+scoreUser = 0;
+scoreComp = 0;
 
 function hideDice() { // Dices are not shown on the page
     let svg = document.querySelectorAll('svg');
@@ -8,11 +9,18 @@ function hideDice() { // Dices are not shown on the page
     })
 }
 
+function compGuess() { // A random dice which the computer(= oponent of user) guesses
+    compNumber = Math.round(Math.random()*5)+1;
+    console.log('computer player guess is ' +compNumber);
+    return compNumber;
+}
+
+
 function showResult() { // Create and display the random dice number
     hideDice();
     randomNumber = Math.round(Math.random()*5)+1; 
     console.log(randomNumber)
-    validateDropdown();
+    
     
     switch(randomNumber) {
         case 1: document.querySelector("#one").style.display= 'block';
@@ -38,24 +46,28 @@ function showResult() { // Create and display the random dice number
 }
 
 function playerWin() {
-    if(document.querySelectorAll('input')[0].value == randomNumber) {
+    if(document.querySelectorAll('input')[0].value == randomNumber && compGuess() != randomNumber)  {
         alert('You have Won');
-        score +=1;
-        console.log('score' + score)
+        scoreUser +=1;
+        console.log('User score' + scoreUser);
+    } else if(document.querySelectorAll('input')[0].value != randomNumber && compGuess() == randomNumber) {
+        alert('Computer has Won');
+        scoreComp +=1;
+        console.log('Computer score' + scoreComp);
     }
    /*  } else if (document.querySelector('option').value) */
 }
 
 
-function validateDropdown() { //Checks whether user selects higher or lower number
-    let userSelect = document.getElementById('dropdown').value;
-    if(userSelect == '1') {
-        alert('Higher Number Selected');
-    } else if (userSelect == '0') {
-        alert('Lower Number Selected');
+//function validateDropdown() { //Checks whether user selects higher or lower number
+//    let userSelect = document.getElementById('dropdown').value; // Higher Number
+/* //    if(userSelect == '1' && document.querySelectorAll('input')[0].value > randomNumber) {
+        console.log('Your guessed number is higher than dice number');
+    } else if (userSelect == '0' && document.querySelectorAll('input')[0].value < randomNumber) { // Lower Number
+        console.log('Your guessed number is lower than dice number');
     }
 }
-
+ */
 
 
 

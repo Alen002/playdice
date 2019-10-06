@@ -9,7 +9,18 @@
 </head>
 <body>
     <header>
-        Play the Dice
+         <div class='header'>
+            Score User: <span id='userScore'></span>
+         </div>
+         <div class='header'>
+            Score Computer: <span id='compScore'></span>
+         </div>
+         <p>Game rounds: <span id='gameRounds'></span></p>
+         <div>
+         <button onclick='newGame()'>Start a New Game</button>
+         
+         </div>
+         
     </header>
 
 
@@ -72,14 +83,8 @@
         </select> -->
 
         <input type='button'value='Roll the Dice' onclick=showResult()></input>
-
+        <p><br/>Score with 6 wins</p>
     </div>
-
-
-
-    
-    
-
 
     <script style='text/javascript' src='script.js'></script>
 </body>

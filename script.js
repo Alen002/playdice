@@ -1,6 +1,7 @@
 hideDice(); // hide dice
 scoreUser = 0;
 scoreComp = 0;
+countRounds = 0;
 
 function hideDice() { // Dices are not shown on the page
     let svg = document.querySelectorAll('svg');
@@ -20,8 +21,9 @@ function showResult() { // Create and display the random dice number
     hideDice();
     randomNumber = Math.round(Math.random()*5)+1; 
     console.log(randomNumber)
-    
-    
+    countRounds += 1;
+    document.querySelector('#gameRounds').innerHTML = countRounds;
+
     switch(randomNumber) {
         case 1: document.querySelector("#one").style.display= 'block';
         playerWin();
@@ -45,18 +47,37 @@ function showResult() { // Create and display the random dice number
     
 }
 
-function playerWin() {
-    if(document.querySelectorAll('input')[0].value == randomNumber && compGuess() != randomNumber)  {
+function playerWin() { //Check which player guesses the correct dice
+    if(document.querySelectorAll('input')[0].value == randomNumber && compGuess() != randomNumber)  { // User wins
         alert('You have Won');
         scoreUser +=1;
         console.log('User score' + scoreUser);
-    } else if(document.querySelectorAll('input')[0].value != randomNumber && compGuess() == randomNumber) {
+        document.getElementById('userScore').innerHTML = scoreUser;
+
+    } else if(document.querySelectorAll('input')[0].value != randomNumber && compGuess() == randomNumber) { // Computer wins
         alert('Computer has Won');
         scoreComp +=1;
         console.log('Computer score' + scoreComp);
+        document.getElementById('compScore').innerHTML = scoreComp;
+    } else if(scoreUser == 6) {
+        alert('Congratulations, you have won the game...');
+    } else if(scoreComp == 6) {
+        alert('You have lost the game');
     }
    /*  } else if (document.querySelector('option').value) */
 }
+
+function newGame() {
+    alert('A new Game has started');
+    scoreUser = 0;
+    scoreComp = 0;
+    countRounds = 0;
+    document.getElementById('compScore').innerHTML = '0';
+    document.getElementById('userScore').innerHTML = '0';
+    document.querySelector('#gameRounds').innerHTML = '0';
+    hideDice();
+}
+
 
 
 //function validateDropdown() { //Checks whether user selects higher or lower number
